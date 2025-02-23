@@ -8,7 +8,7 @@
 #let faGraduationCap = icon("icons/fa-graduation-cap.svg")
 #let faEnvelope = icon("icons/fa-envelope.svg")
 #let faBuildingColumns = icon("icons/fa-building-columns.svg")
-#let faCode = icon("icons/code.svg")
+#let projeck = icon("icons/projeck.svg")
 #let wechat = icon("icons/WeChat.svg")
 
 #let themeColor = rgb(0, 0, 0)
@@ -76,7 +76,7 @@
 
 *奖学金*：20xx 年度家里蹲大学一等奖学金
 
-== #faCode 项目经历
+== #projeck 项目经历
 
 #item(
   [ *项目名称* ],
