@@ -120,22 +120,22 @@
 
 #let info(
   color: black,
-  ..infos,
+  ..infos
 ) = {
-  set text(font: (font.cjk, font.mono), fill: color, size: 10.2pt, tracking: 0.3pt)
-  set par(leading: 1.2em)
-  infos
-    .pos()
-    .map(dir => {
+    set text(font: (font.cjk,font.mono), fill: color, size: 10.2pt, tracking: 0.3pt)
+    set par(leading: 1.2em) // 行间距
+
+    // 生成所有信息项的 box 列表
+    let items = infos.pos().map(dir => {
       box({
         if "icon" in dir {
-          if (type(dir.icon) == "string") {
+          if (type(dir.icon) == str) {
             icon(dir.icon)
           } else {
             dir.icon
           }
         }
-        h(0.2em)
+        h(0.2em) // 图标和文字的间距
         if "link" in dir {
           link(dir.link, dir.content)
         } else {
@@ -143,8 +143,14 @@
         }
       })
     })
-    .join(h(2em) + h(1em))
-  v(0.1em)
+
+    // 使用 grid 排列成两列，自动换行
+    grid(
+      columns: (auto, auto), // 两列，宽度自动
+      column-gutter: 2em,    // 列间距
+      row-gutter: 0.9em,     // 行间距
+      ..items                // 将 items 列表展开到 grid 中
+    )
 }
 
 #let date(body) = text(
